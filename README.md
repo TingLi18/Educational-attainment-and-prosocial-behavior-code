@@ -198,14 +198,6 @@ hist(R5_volunteering$Education_father,xlab = "The years of education",col="orang
 Educational_PRS<-read_tsv("Lee_idpub_shuffled.txt", col_names = TRUE)
 dim(Educational_PRS)
 
-### Education_PRs<-read_delim("Lee_idpub_shuffled.txt",
-###           col_names = c("idpub", "rtype", "pgs_ea3_gwas", "pgs_ea3_mtag", "pgs_cp_gwas", "pgs_cp_mtag", "pgs_hm_mtag", 
-###                          "pgs_ma_mtag", "pc1_shuffled", "pc2_shuffled", "pc3_shuffled", "pc4_shuffled", "pc5_shuffled", 
-###                          "pc6_shuffled", "pc7_shuffled", "pc8_shuffled", "pc9_shuffled", "pc10_shuffled"),
-###           delim = "\t",
-###           skip = 1)
-
-
 #####################----------------------------------------------------####################################################################
 #### Select the participants Graduators, not the sibling
 Graduate_Educational_PRS<-Educational_PRS[which(Educational_PRS$rtype=="g"),]
