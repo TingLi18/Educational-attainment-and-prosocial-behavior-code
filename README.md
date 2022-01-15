@@ -49,6 +49,7 @@ va$items<-c("idpub", "selsibidpub","rtype", "personid","selsibtype", "z_brdxdy",
  "z_iv014re", "z_iv015re","z_iv016re",  "z_iv017re","z_iv103rer","z_iv018re","z_iv019re","z_iv020re","z_iv021re","z_iv022re","z_iv023re","z_iv104rer",
   "z_iv024re","z_gv104re", "z_gv105re","z_gv106re","z_gv107re","z_gv108re","z_gv109re","z_gv110rea","z_gv115re",
   "z_gv116re","z_gv117re","z_gv118re","gv112reb","gv113re","z_iv201rer", "z_gq700r", "z_gq701r", "gv112reb","z_gv110rea")
+  
 R5_screening = WLS[,va$items]
 dim(R5_screening)
 summary(R5_screening)
@@ -210,7 +211,6 @@ dim(Educational_PRS)
 Graduate_Educational_PRS<-Educational_PRS[which(Educational_PRS$rtype=="g"),]
 dim(Graduate_Educational_PRS)
 
-
 Graduate_R5_volunteering<-R5_volunteering[which(R5_volunteering$rtype=="1"),]
 dim(Graduator_R5_volunteering)
 
@@ -224,7 +224,6 @@ dim(Graduate_volunteering_PRS)
 Siblings_Educational_PRS<-Educational_PRS[which(Educational_PRS$rtype=="s"),]
 dim(Siblings_Educational_PRS)
 
-
 Siblings_R5_volunteering<-R5_volunteering[which(R5_volunteering$rtype=="2"),]
 dim(Siblings_R5_volunteering)
 
@@ -232,7 +231,6 @@ dim(Siblings_R5_volunteering)
 Siblings_volunteering_PRS <- merge(Siblings_R5_volunteering,Siblings_Educational_PRS,by=c("idpub"))
 dim(Siblings_volunteering_PRS)
 #######################---------------------------------------------------------------------------------------
-
 
 ##### Prosocial behavior formal and informal format #######################################################
 ###################  Model for listwise deletion n = 2592 #### 
@@ -243,18 +241,15 @@ Graduate_prosocial_behaviors <- Graduate_prosocial_behavior[complete.cases(Gradu
 dim(Graduate_prosocial_behaviors)
 
 ################### Analysis_for n=2592 ##################################################################
-
-################ standardized the polygenic score of educational attainment ##################################
+################ standardized the polygenic score of educational attainment ###############################
 
 Graduate_prosocial_behaviors$Educational_PS_standardized <-(Graduate_prosocial_behaviors$Educational_PS-mean(Graduate_prosocial_behaviors$Educational_PS))/sd(Graduate_prosocial_behaviors$Educational_PS)
-
 
 ### descriptive analysis 
 describe(Graduate_prosocial_behaviors)
 hist(Graduate_prosocial_behaviors$Years_of_Education,xlab = "The years of education",col="orange",ylim = c(0,3000),xlim = c(12,21),main="Educational attainment")
 hist(Graduate_prosocial_behaviors$Educational_PS,col="orange",ylim = c(0,800),xlim = c(-0.6, 0.4),main="Educational polygenic score")
 hist(Graduate_prosocial_behaviors$Education_mother,xlab = "The years of education",col="orange",ylim = c(0,3000),xlim = c(6,18),main="Mothers' education")
-
 hist(Graduate_prosocial_behaviors$Education_father,xlab = "The years of education",col="orange",ylim = c(0,3000),xlim = c(6,18),main="Fathers' education")
 
 ### build SEM model two factors model
@@ -276,19 +271,14 @@ Graduate_prosocial_behaviors<-cbind(Graduate_prosocial_behaviors, FormalInformal
 ### visuliazation 
 graph_sem(fit_formal_informal,rect_width = 1.6,variance_diameter = 0.3)
 
-
 ### build SEM model one factor model
 model2 <-'
 # regressions
-
 Prosocial_behavior_One_factor =~ Charitable_contribution + Ever_blood_donation + Index_organization
                      +Index_help_behavior+Index_house_work_help+Index_emotional_support+Index_babysitting
 ' 
-
 fit_model2<- sem(model2, data = Graduate_prosocial_behaviors)
-
 summary(fit_model2, standardized=TRUE, fit.measures=TRUE)
-
 
 #####################----------------------------------------------------####################################################################
 ### correlation analysis between the participants' educational attainment, Educational-PS, formal and informal prosocial behavior 
@@ -319,17 +309,12 @@ fit_educational_attainment<-lm(Years_of_Education ~ Educational_PS_standardized+
                             data=Graduate_prosocial_behaviors)
 summary(fit_educational_attainment)
 
-
-
 #### regression analysis for predicting Formal prosocial behavior 
-
-
 fit_Formal_prosocial_behavior1<-lm(Formal_behavior~ Educational_PS_standardized+Health_statement+age_at_R5+gender+Home_ownship+
                                      Education_mother+Education_father+Financial_Satisfaction+pc1_shuffled+pc2_shuffled+pc3_shuffled+pc3_shuffled
                                    +pc4_shuffled+pc5_shuffled+pc6_shuffled+pc7_shuffled+pc8_shuffled+pc9_shuffled+pc10_shuffled, 
                                    data=Graduate_prosocial_behaviors)
 summary(fit_Formal_prosocial_behavior1)
-
 
 fit_Formal_prosocial_behavior2<-lm(Formal_behavior~ Educational_PS_standardized+Years_of_Education+Health_statement+age_at_R5+gender+Home_ownship+
                                      Education_mother+Education_father+Financial_Satisfaction+pc1_shuffled+pc2_shuffled+pc3_shuffled+pc3_shuffled
@@ -347,13 +332,11 @@ fit_Informal_prosocial_behavior1<-lm(Informal_behavior~ Educational_PS_standardi
                                      data=Graduate_prosocial_behaviors)
 summary(fit_Informal_prosocial_behavior1)
 
-
 fit_Informal_prosocial_behavior2<-lm(Informal_behavior~ Educational_PS_standardized+Years_of_Education+Health_statement+age_at_R5+gender+Home_ownship+
                                        Education_mother+Education_father+Financial_Satisfaction+pc1_shuffled+pc2_shuffled+pc3_shuffled+pc3_shuffled
                                      +pc4_shuffled+pc5_shuffled+pc6_shuffled+pc7_shuffled+pc8_shuffled+pc9_shuffled+pc10_shuffled, 
                                      data=Graduate_prosocial_behaviors)
 summary(fit_Informal_prosocial_behavior2)
-
 
 #### mediation analysis
 #### for prosocial behavior
@@ -369,8 +352,6 @@ process (data=Graduate_prosocial_behaviors,y="Formal_behavior",x="Educational_PS
          cov=c("age_at_R5","gender","Health_statement","Home_ownship", "Financial_Satisfaction","Education_mother","Education_father", "pc1_shuffled",
                "pc2_shuffled", "pc3_shuffled","pc4_shuffled","pc5_shuffled","pc6_shuffled", "pc7_shuffled", "pc8_shuffled", "pc9_shuffled",
                "pc10_shuffled"),model=4,contrast=1,normal=1,conf=90,save=1, stand=1)
-
-
 
 ################### Save the working datafile and results#######################################3
 
