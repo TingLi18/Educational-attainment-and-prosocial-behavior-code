@@ -43,13 +43,12 @@ names(WLS)
 dput(names(WLS))
 va<-list()
 va$items<-c("idpub", "selsibidpub","rtype", "personid","selsibtype", "z_brdxdy", "z_sexrsp","sibcount","edfa57q","edmo57q", 
-            "z_ga003re", "z_gb103red", "z_gb104red", "z_gb005rec","z_gb007rec", "z_gc001re", "z_ic001rer","z_gx201re","z_gp226re","z_gx201re","z_gr020rp",
-            "z_gv111re", "z_gv112rea",	"z_gv114re", "z_gv001res","z_gv020re", "z_gv101re","z_gv102re", "z_iv001re", "z_iv002re","z_iv003re", "z_iv004re",
-            "z_iv005re","z_iv101rer",	"z_iv006re", 	"z_iv007re", "z_iv008re",
-            "z_iv009re", "z_iv010re", "z_iv011re", "z_iv102rer",	"z_iv012re","z_iv013re",	"z_iv014re", "z_iv015re","z_iv016re",
-            "z_iv017re","z_iv103rer","z_iv018re",	"z_iv019re",	"z_iv020re",	"z_iv021re","z_iv022re","z_iv023re","z_iv104rer",
-            "z_iv024re","z_gv104re", "z_gv105re",	"z_gv106re",	"z_gv107re","z_gv108re","z_gv109re","z_gv110rea","z_gv115re",
-            "z_gv116re","z_gv117re","z_gv118re","gv112reb","gv113re","z_iv201rer", "z_gq700r", "z_gq701r", "gv112reb","z_gv110rea")
+ "z_ga003re", "z_gb103red", "z_gb104red", "z_gb005rec","z_gb007rec", "z_gc001re", "z_ic001rer","z_gx201re","z_gp226re","z_gx201re","z_gr020rp",
+ "z_gv111re", "z_gv112rea","z_gv114re", "z_gv001res","z_gv020re", "z_gv101re","z_gv102re", "z_iv001re", "z_iv002re","z_iv003re", "z_iv004re",
+ "z_iv005re","z_iv101rer","z_iv006re", "z_iv007re", "z_iv008re","z_iv009re", "z_iv010re", "z_iv011re", "z_iv102rer","z_iv012re","z_iv013re",
+ "z_iv014re", "z_iv015re","z_iv016re",  "z_iv017re","z_iv103rer","z_iv018re","z_iv019re","z_iv020re","z_iv021re","z_iv022re","z_iv023re","z_iv104rer",
+  "z_iv024re","z_gv104re", "z_gv105re","z_gv106re","z_gv107re","z_gv108re","z_gv109re","z_gv110rea","z_gv115re",
+  "z_gv116re","z_gv117re","z_gv118re","gv112reb","gv113re","z_iv201rer", "z_gq700r", "z_gq701r", "gv112reb","z_gv110rea")
 R5_screening = WLS[,va$items]
 dim(R5_screening)
 summary(R5_screening)
@@ -60,7 +59,6 @@ summary(R5_screening)
 ## idpub        ID
 ## z_ga003re   R5 Respondent's age at time of interview; 
 ## z_sexrsp    RS Sex of participant; 
-
 ### Education
 ## z_gb103red	 R5 How many years of education does R have based on his or her highest degree?
 ## z_gx201re   R5 In general, would you say your health is excellent, very good, good, fair, or poor?
@@ -73,8 +71,6 @@ summary(R5_screening)
 ## gv113re	  R5 Number of hours per month graduate spent volunteering in a typical month during the last year.  
 ## z_gv102re	R5 How regularly did graduate volunteer in the last 10 years?
 ## gv112reb	  R5 For seasonal volunteers, typically how many hours did graduate spend volunteering in the last 12 months?
-
-
 ### Blood donation 
 ## z_gv115re	R5 Has R ever given a unit of blood for own use?
 ## z_gv116re	R5 Has R ever given blood for use by others?
